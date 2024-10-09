@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Location Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+ @media (max-width: 600px) {
+            #map {
+                height: 300px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                text-align: center;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+                font-size: 1em;
+            }
+
+            #shareLink {
+                text-align: center;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Location Tracker</h1>
+    <div id="map"></div>
+    <button onclick="shareLocation()">Share My Location</button>
+    <p id="shareLink"></p>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
