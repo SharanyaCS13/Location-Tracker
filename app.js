@@ -68,14 +68,3 @@ function showError(error) {
     }
 }
 
-function updateShareLink(lat, lng) {
-    const userId = 'uniqueUserId'; // Replace with a unique identifier for the user
-    const link = `${window.location.href.split('?')[0]}?user=${userId}&lat=${lat}&lng=${lng}`;
-    const shareLinkElement = document.getElementById('shareLink');
-    shareLinkElement.innerHTML = `<a href="${link}" target="_blank">Track My Live Location</a> <button onclick="copyToClipboard('${link}')">Copy Link</button> <button onclick="shareViaWhatsApp('${link}')">Share via WhatsApp</button>`;
-}
-
-function shareViaWhatsApp(link) {
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent('Track my live location: ' + link)}`;
-    window.open(whatsappUrl, '_blank');
-}
