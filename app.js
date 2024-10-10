@@ -67,5 +67,3 @@ function showError(error) {
             break;
     }
 }
-
-
