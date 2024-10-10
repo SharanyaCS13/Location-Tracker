@@ -24,7 +24,8 @@ function updatePosition(position) {
 }
 
 function updateShareLink(lat, lng) {
-    const link = `${window.location.href.split('?')[0]}?lat=${lat}&lng=${lng}`;
+    const userId = 'uniqueUserId'; // Replace with a unique identifier for the user
+    const link = `${window.location.href.split('?')[0]}?user=${userId}&lat=${lat}&lng=${lng}`;
     const shareLinkElement = document.getElementById('shareLink');
     shareLinkElement.innerHTML = `<a href="${link}" target="_blank">Track My Live Location</a> <button onclick="copyToClipboard('${link}')">Copy Link</button>`;
 }
@@ -67,3 +68,24 @@ function showError(error) {
             break;
     }
 }
+
+// Function to fetch and display the live location based on the unique identifier
+function fetchLiveLocation() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('user');
+    const lat = urlParams.get('lat');
+    const lng = urlParams.get('lng');
+
+    if (userId && lat && lng) {
+        marker.setLatLng([lat, lng]);
+        map.setView([lat, lng], 13);
+    } else {
+        alert("Invalid location data.");
+    }
+}
+
+// Call fetchLiveLocation if the URL contains location data
+if (window.location.search) {
+    fetchLiveLocation();
+}
+
